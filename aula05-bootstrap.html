@@ -93,21 +93,34 @@
 
     <script>
 
-      const telaEnvio  = document.getElementById('telaEnvio');
-      const telaChat  = document.getElementById('telaChat');
-      const campoTexto  = document.getElementById('campoTexto');
-      const btnEnviar  = document.getElementById('btnEnviar');
-      const btnVoltar  = document.getElementById('btnVoltar');
-      const listaMensagens  = document.getElementById('listaMensagens');
+     document.getElementById('loginForm').addEventListener(
+        'submit', function(e){
+          e.preventDefault();
 
-      btnEnviar.onclick = () => {
-        const texto = campoTexto.value.trim();
+          const email = document.getElementById('email').value;
+          const senha = document.getElementById('senha').value;
 
-        if(texto !=''){
-          
+          if( email === 'admin@email.com' && senha === '1234') {
+              //USUÁRIO E SENHA CORRETOS -> REDIRECIONA PARA A PÁGINA PRINCIPAL
+
+              Swal.fire({
+                icon: 'success',
+                title: 'Login bem-sucedido!',
+                text: 'Redirecionando...',
+                showConfirmButton: false,
+                timer: 1500,
+              }).then(()=> {
+              window.location.href = 'aula05-dashboard.html';
+              })
+
+          } else {
+              Swal.fire('Erro', 'Usuário ou senha incorretos!', 'error');
+          }
         }
-      }
-    
-
+      )
+      
     </script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </body>
+  </html>
